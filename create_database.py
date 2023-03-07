@@ -2,7 +2,9 @@ from flask import Flask
 from app.dao.models.movie import Movie
 from app.dao.models.director import Director
 from app.dao.models.genre import Genre
+from app.dao.models.user import User
 from setup_db import db
+from app.implemented import user_service
 
 
 app = Flask(__name__)
@@ -241,3 +243,11 @@ with app.app_context():
         )
         with db.session.begin():
             db.session.add(d)
+
+with app.app_context():
+    u1 = User(username="vasya", password=user_service.generate_password_hash("my_little_pony"), role="user")
+    u2 = User(username="oleg", password=user_service.generate_password_hash("qwerty"), role="user")
+    u3 = User(username="oleg", password=user_service.generate_password_hash("qwerty""P@ssw0rd"), role="admin")
+
+    with db.session.begin():
+        db.session.add_all([u1, u2, u3])
