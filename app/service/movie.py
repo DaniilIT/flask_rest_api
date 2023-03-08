@@ -1,8 +1,8 @@
-from app.dao.movie import MovieDao
+from app.dao.movie import MovieDAO
 
 
 class MovieService:
-    def __init__(self, dao: MovieDao):
+    def __init__(self, dao: MovieDAO):
         self.dao = dao
 
     def get_one(self, movie_id):

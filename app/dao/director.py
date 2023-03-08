@@ -1,7 +1,7 @@
 from .models.director import Director
 
 
-class DirectorDao:
+class DirectorDAO:
     def __init__(self, session):
         self.session = session
 

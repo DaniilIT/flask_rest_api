@@ -2,12 +2,12 @@ import base64
 import hashlib
 import hmac
 
-from app.dao.user import UserDao
+from app.dao.user import UserDAO
 from constants import PWD_HASH_SALT, PWD_HASH_ITERATIONS
 
 
 class UserService:
-    def __init__(self, dao: UserDao):
+    def __init__(self, dao: UserDAO):
         self.dao = dao
 
     def get_one(self, user_id):
